@@ -16,7 +16,7 @@ import java.util.Date;
  * @since 2020-04-15 10:59:12
  */
 @Data
-public class CreditCustomerVo {
+public class CustomerVo {
 
     /**
      * 授信客户自增id

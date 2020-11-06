@@ -15,6 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <!--第三包版本管理-->
     <properties>
+        <swagger.fox.version>2.9.2</swagger.fox.version>
         <java.version>1.8</java.version>
         <druid-spring.version>1.1.10</druid-spring.version>
         <dynamic-datasource.version>2.5.0</dynamic-datasource.version>
@@ -103,6 +104,21 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
         </dependency>
+<!--        swagger2-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.fox.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
+            <classifier>sources</classifier>
+        </dependency>
+
     </dependencies>
 
     <build>
