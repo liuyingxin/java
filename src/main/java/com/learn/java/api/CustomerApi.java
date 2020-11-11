@@ -3,7 +3,6 @@ package com.learn.java.api;
 import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.ListDto;
 import com.learn.java.response.ApiResult;
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -15,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.learn.java.bean.dto.CustomerDto;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Api(tags = "Api信息模块")
-@RequestMapping(value = "/customer")
+@RequestMapping(value ={ "/customer"})
 @Validated
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
@@ -40,7 +40,7 @@ public interface CustomerApi {
 
     @ApiOperation("通过id删除数据")
     @PostMapping("deleteInfomation")
-    ApiResult<CustomerVo> deleteInfo(@ApiParam(value = "ID", example = "1", required = true)
+    ApiResult<CustomerVo> deleteInfo(@ApiParam(value = "id", example = "1", required = true)
                                      @NotNull @PathVariable Integer id);
 
 }
