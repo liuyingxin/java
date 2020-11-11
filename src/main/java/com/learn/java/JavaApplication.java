@@ -1,6 +1,7 @@
 package com.learn.java;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,12 +9,16 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @MapperScan("com.learn.java.*")
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
+@Slf4j
 public class JavaApplication {
 
     public static void main(String[] args) {
-        System.out.println("开始了");
+
         SpringApplication.run(JavaApplication.class, args);
-        System.out.println("成功了");
+        log.info("==================================");
+        log.info("JavaApplication Server startup");
+        log.info("==================================");
+
     }
 
 }
