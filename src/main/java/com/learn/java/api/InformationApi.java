@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @since 2020-04-07 15:46:43
  */
 
-@Api(tags = "个人信息模块")
+@Api(tags = {"个人信息"})
 @RequestMapping(value = {"/Information"})
 
 public interface InformationApi {

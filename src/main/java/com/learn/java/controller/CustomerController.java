@@ -5,6 +5,7 @@ import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.CustomerDto;
 import com.learn.java.bean.dto.ListDto;
 import com.learn.java.entity.Customer;
+import com.learn.java.mapper.CustomerMapper;
 import com.learn.java.response.ApiResult;
 import com.learn.java.service.CustomerService;
 import com.sun.istack.internal.NotNull;
@@ -25,6 +26,8 @@ import java.util.List;
 public class CustomerController implements CustomerApi {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CustomerMapper customerMapper;
 
     @Override
     public ApiResult<List<CustomerVo>> getMyList(ListDto listDto) {

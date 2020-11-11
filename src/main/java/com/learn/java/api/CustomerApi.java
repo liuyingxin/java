@@ -16,7 +16,7 @@ import com.learn.java.bean.dto.CustomerDto;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Api(tags = "Api信息模块")
+@Api(tags = {"个人信息增删"})
 @RequestMapping(value = {"/customer"})
 public interface CustomerApi {
     @ApiOperation("分页查询列表")

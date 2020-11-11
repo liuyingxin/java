@@ -16,7 +16,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableSwagger2Doc
 @EnableScheduling
 @EnableConfigurationProperties
-
 public class JavaApplication {
 
     public static void main(String[] args) {
