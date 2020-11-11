@@ -4,6 +4,7 @@ import com.learn.java.api.CustomerApi;
 import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.CustomerDto;
 import com.learn.java.bean.dto.ListDto;
+import com.learn.java.cache.SimpleCache;
 import com.learn.java.entity.Customer;
 import com.learn.java.mapper.CustomerMapper;
 import com.learn.java.response.ApiResult;
@@ -48,6 +49,7 @@ public class CustomerController implements CustomerApi {
     }
 
     @Override
+    @SimpleCache(key="customer",value = "{id}")
     public ApiResult<CustomerVo> selectInfomationById(@NotNull Integer id) {
         Customer customer = customerService.getById(id);
         CustomerVo customerVo = new CustomerVo();

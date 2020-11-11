@@ -32,7 +32,7 @@ public class SimpleCacheAop extends BasicCacheAop {
             return pjp.proceed();
         }
         String methodName = getMethodName(pjp);
-        String calKey = justJoinToGetCacheKey(this.getTargetClassName(pjp), this.getMethodName(pjp), this.getArgName2Value(pjp), cache.value());
+        String calKey = justJoinToGetCacheKey(cache.key(), this.getMethodName(pjp), this.getArgName2Value(pjp), cache.value());
         String cacheKey = calKey;
         if (calKey.length() > SIMPLE_CACHE_KEY_MAX_LEN) {
             cacheKey = md5str(cacheKey);

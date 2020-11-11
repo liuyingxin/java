@@ -8,10 +8,14 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
 public @interface SimpleCache {
+
+    String key() default "";
+
     String[] value() default {""};
 
     /**
      * 缓存的 秒
+     *
      * @return
      */
     int expireTime() default -1;

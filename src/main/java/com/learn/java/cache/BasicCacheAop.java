@@ -30,7 +30,7 @@ public class BasicCacheAop {
 
     protected String justJoinToGetCacheKey(String className, String methodName, Map<String, Object> argName2Value, String... specificKeys) {
         try {
-            className = StringUtils.isEmpty(className) ? "method-cache-" : className + "-" + methodName + "-";
+            className = StringUtils.isEmpty(className) ? "method-cache-" : className + ":" + methodName + ":";
             List<String> results = new ArrayList(specificKeys.length);
             String[] var6 = specificKeys;
             int var7 = specificKeys.length;
