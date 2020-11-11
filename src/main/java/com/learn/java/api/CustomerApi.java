@@ -3,11 +3,9 @@ package com.learn.java.api;
 import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.ListDto;
 import com.learn.java.response.ApiResult;
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.learn.java.bean.dto.CustomerDto;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Api(tags = "Api信息模块")
-@RequestMapping(value = {"/Customer"})
+@RequestMapping(value = {"/customer"})
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
     @PostMapping("/lists")
