@@ -18,8 +18,7 @@ import com.learn.java.bean.dto.CustomerDto;
 import java.util.List;
 
 @Api(tags = "Api信息模块")
-//@RequestMapping(value = "/customer")
-@Validated
+@RequestMapping(value = {"/Customer"})
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
     @PostMapping("/lists")
@@ -27,11 +26,11 @@ public interface CustomerApi {
 
     @ApiOperation("新增数据")
     @PostMapping("addInfomation")
-    ApiResult<CustomerVo> addInfomation(@RequestBody CustomerDto customerDto);
+    ApiResult<CustomerVo> addInfomation( @RequestBody CustomerDto c2);
 
     @ApiOperation("修改数据")
     @PostMapping("updateInfomation")
-    ApiResult<CustomerVo> updateInfomation(@RequestBody CustomerDto customerDto);
+    ApiResult<CustomerVo> updateInfomation( @RequestBody CustomerDto c1);
 
     @ApiOperation("通过id查询详情")
     @GetMapping("selectInfomationById/{id}")
