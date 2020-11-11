@@ -18,7 +18,7 @@ import com.learn.java.bean.dto.CustomerDto;
 import java.util.List;
 
 @Api(tags = "Api信息模块")
-@RequestMapping(value = {"/Customer"})
+@RequestMapping(value = {"/customer"})
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
     @PostMapping("/lists")
