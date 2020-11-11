@@ -3,7 +3,8 @@ package com.learn.java.api;
 import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.ListDto;
 import com.learn.java.response.ApiResult;
-import com.sun.istack.internal.NotNull;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -19,18 +20,19 @@ import java.util.List;
 
 @Api(tags = "Api信息模块")
 @RequestMapping(value = {"/customer"})
+@Validated
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
     @PostMapping("/lists")
-    ApiResult<List<CustomerVo>> getMyList(@RequestBody ListDto listDto);
+    ApiResult<List<CustomerVo>> getMyList( @Valid @RequestBody ListDto listDto);
 
     @ApiOperation("新增数据")
     @PostMapping("addInfomation")
-    ApiResult<CustomerVo> addInfomation( @RequestBody CustomerDto c2);
+    ApiResult<CustomerVo> addInfomation( @Valid  @RequestBody CustomerDto c2);
 
     @ApiOperation("修改数据")
     @PostMapping("updateInfomation")
-    ApiResult<CustomerVo> updateInfomation( @RequestBody CustomerDto c1);
+    ApiResult<CustomerVo> updateInfomation( @Valid  @RequestBody CustomerDto c1);
 
     @ApiOperation("通过id查询详情")
     @GetMapping("selectInfomationById/{id}")
