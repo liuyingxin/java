@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 客户信息表(Customer)表控制层
@@ -40,25 +41,30 @@ public class CustomerController implements CustomerApi {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
         customerService.save(customer);
+        return ApiResult.success();
+    }
+
+    @Override
+    public ApiResult updateInfomation(CustomerDto customerDto) {
+        Customer customer = null;
+        BeanUtils.copyProperties(customerDto, customer);
+        customerService.updateById(customer);
         return  ApiResult.success();
     }
 
     @Override
-    public ApiResult<CustomerVo> updateInfomation(CustomerDto customerDto) {
-        return null;
-    }
-
-    @Override
-    @SimpleCache(key="customer",value = "{id}")
+    @SimpleCache(key = "customer", value = "{id}")
     public ApiResult<CustomerVo> selectInfomationById(@NotNull Integer id) {
         Customer customer = customerService.getById(id);
-        CustomerVo customerVo = new CustomerVo();
+        CustomerVo customerVo = null;
+        Optional.ofNullable(customerVo);
         BeanUtils.copyProperties(customer, customerVo);
         return ApiResult.success(customerVo);
     }
 
     @Override
-    public ApiResult<CustomerVo> deleteInfo(@NotNull Integer id) {
-        return null;
+    public ApiResult deleteInfo(@NotNull Integer id) {
+        customerService.removeById(id);
+        return  ApiResult.success();
     }
 }

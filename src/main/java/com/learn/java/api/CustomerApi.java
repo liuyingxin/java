@@ -25,20 +25,20 @@ public interface CustomerApi {
 
     @ApiOperation("新增数据")
     @PostMapping("addInfomation")
-    ApiResult<CustomerVo> addInfomation( @RequestBody CustomerDto c2);
+    ApiResult<CustomerVo> addInfomation(@RequestBody CustomerDto c2);
 
     @ApiOperation("修改数据")
     @PostMapping("updateInfomation")
-    ApiResult<CustomerVo> updateInfomation( @RequestBody CustomerDto c1);
+    ApiResult updateInfomation(@RequestBody CustomerDto c1);
 
     @ApiOperation("通过id查询详情")
     @GetMapping("selectInfomationById/{id}")
     ApiResult<CustomerVo> selectInfomationById(@ApiParam(value = "ID", example = "1", required = true)
-                                  @NotNull @PathVariable Integer id);
+                                               @NotNull @PathVariable Integer id);
 
     @ApiOperation("通过id删除数据")
     @PostMapping("deleteInfomation")
-    ApiResult<CustomerVo> deleteInfo(@ApiParam(value = "ID", example = "1", required = true)
-                                     @NotNull @PathVariable Integer id);
+    ApiResult deleteInfo(@ApiParam(value = "ID", example = "1", required = true)
+                         @NotNull @PathVariable Integer id);
 
 }
