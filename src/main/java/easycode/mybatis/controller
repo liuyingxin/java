@@ -1,0 +1,29 @@
+
+#set($tableName = $tool.append($tableInfo.name, "Controller"))
+##设置回调
+$!callback.setFileName($tool.append($tableName, ".java"))
+$!callback.setSavePath($tool.append($tableInfo.savePath, "/controller"))
+##拿到主键
+#if(!$tableInfo.pkColumn.isEmpty())
+    #set($pk = $tableInfo.pkColumn.get(0))
+#end
+
+#if($tableInfo.savePackageName)package $!{tableInfo.savePackageName}.#{end}controller;
+##使用全局变量实现默认包导入
+$!autoImport
+import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+/**
+* $!{tableInfo.comment}($!{tableInfo.name})表控制层
+*
+* @author $!author
+* @since $!time.currTime()
+*/
+@RestController
+public class $!{tableName} implements $!{tableInfo.name}Api{
+@Autowired
+private $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service;
+}

@@ -51,7 +51,7 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insertInto" keyProperty="id" useGeneratedKeys="true">
         insert into local_my_redis.cinema
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="movie != null and movie != ''">

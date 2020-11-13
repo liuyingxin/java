@@ -1,0 +1,23 @@
+##引入宏定义
+$!define
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/service/impl", "ServiceImpl.java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("service.impl")
+
+##使用全局变量实现默认包导入
+import $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
+import $!{tableInfo.savePackageName}.mapper.$!{tableInfo.name}Mapper;
+import $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+##使用宏定义实现类注释信息
+#tableComment("ServiceImpl类")
+@Service
+public class $!{tableInfo.name}ServiceImpl extends ServiceImpl<$!{tableInfo.name}Mapper, $!{tableInfo.name}> implements $!{tableInfo.name}Service {
+
+}
