@@ -1,0 +1,34 @@
+
+#if($column)
+    $!define
+    #save("/enums", "Enum.java",$column.name)
+    #setPackageSuffix("enums")
+
+import com.baomidou.mybatisplus.annotation.EnumValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+    #enumComment($column.name,"枚举类")
+@Getter
+@AllArgsConstructor
+public enum $!{tool.firstUpperCase($column.name)}Enum implements DataEnum {
+    #set($startIndex = ${column.comment.indexOf("(")} + 1)
+    #set($endIndex = $column.comment.indexOf(")"))
+    #set($list = ${column.comment.substring($startIndex, $endIndex).split(",")})
+    #foreach($content in $list)
+        #set($obj = ${content.split(":")})
+        #set($valueObj = ${obj[1].split("-")})
+
+    /**
+    * $content
+    */
+        ${obj[0].toUpperCase().trim()}("${valueObj[0].trim()}","${valueObj[1].trim()}"),
+    #end;
+
+@EnumValue
+private String code;
+
+private String msg;
+
+}
+#end
