@@ -4,6 +4,8 @@ import java.util.Date;
 
 import lombok.Data;
 
+import javax.validation.constraints.Pattern;
+
 @Data
 public class CustomerDto {
 
@@ -13,13 +15,16 @@ public class CustomerDto {
     private Integer id;
 
     /**
-     * 客户姓名"
+     * 客户姓名
      */
+
+    @Pattern(regexp = "^[^\\s]*$", message = "客户姓名中，请不要输入多余空格")
     private String userName;
 
     /**
-     * 客户电话"
+     * 客户电话
      */
+    @Pattern(regexp = "^[1][3,4,5,6,7,8,9][0-9]{9}$", message = "请填写正确手机号")
     private String mobile;
 
     /**
@@ -55,6 +60,8 @@ public class CustomerDto {
     /**
      * 用户银行预留电话"
      */
+
+    @Pattern(regexp = "^[0-9]*$", message = " 客户电话必须是纯数字，请仔细核对(是否含有多余空格等)")
     private String bankMobile;
 
     /**

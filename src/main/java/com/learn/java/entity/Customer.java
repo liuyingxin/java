@@ -2,12 +2,14 @@ package com.learn.java.entity;
 
 import java.util.Date;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.learn.java.bean.CustomerVo;
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
 
 /**
  * 客户信息表(Customer)实体类

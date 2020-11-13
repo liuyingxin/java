@@ -1,0 +1,52 @@
+##引入宏定义
+$!define
+$!parentSet
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/entity", ".java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("entity")
+
+##使用全局变量实现默认包导入
+$!autoImport
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import com.xin.framework.domain.BaseEntity;
+import lombok.EqualsAndHashCode;
+import com.xin.framework.common.enums.*;
+
+##使用宏定义实现类注释信息
+#tableComment("实体类")
+@Data
+@TableName("$tableInfo.obj.getName()")
+#if($extendsFlag == true)
+@EqualsAndHashCode(callSuper = true)
+#end
+public class $!{tableInfo.name} #if($extendsFlag == true)extends BaseEntity #end{
+#foreach($column in $tableInfo.fullColumn)
+    ##判断是否为枚举参数
+    #isEnum($column)
+    #if($enumFlag == true)
+        #set($enumMap = $!tool.newHashMap())
+        $!tool.call($enumMap.put("column",$column))
+        $!tool.call($generateService.run("uxin.enum.java",$enumMap))
+    #end
+
+    #if(${column.comment})
+    /**
+    * ${column.comment}
+    */
+    #end
+    #if($velocityCount == 1)
+    @TableId(type = IdType.AUTO)
+    #end
+@TableField("$column.obj.getName()")
+private #if($enumFlag == true)$!{tool.firstUpperCase($column.name)}Enum#else$!{tool.getClsNameByFullName($column.type)}#end $!{column.name};
+#end
+
+}

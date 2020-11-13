@@ -1,0 +1,44 @@
+##引入宏定义
+$!define
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/api", "Api.java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("api")
+
+##使用全局变量实现默认包导入
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.RequestMapping;
+import $!{tableInfo.savePackageName}.bean.vo.$!{tableInfo.name}Vo;
+import $!{tableInfo.savePackageName}.bean.dto.$!{tableInfo.name}Dto;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
+@RequestMapping(value = {"/$!{tableInfo.name}"})
+@Validated
+public interface $!{tableInfo.name}Api{
+
+@ApiOperation("分页查询列表")
+@PostMapping("/getList")
+ApiResult<List<$!{tableInfo.name}Vo>> getList(@Validated @RequestBody $!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto);
+
+    @ApiOperation("新增数据")
+    @PostMapping("/addInfos")
+    ApiResult addInfos(@Validated @RequestBody $!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto);
+
+    @ApiOperation("修改数据")
+    @PostMapping("/updateInfo")
+    ApiResult updateInfo(@Validated @RequestBody $!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto);
+
+    @ApiOperation("通过id查询详情")
+    @GetMapping("/getById/{id}")
+    ApiResult<$!{tableInfo.name}Vo> getById(@ApiParam(value = "ID", example = "1", required = true)
+        @NotNull @PathVariable Integer id);
+
+        @ApiOperation("通过id删除数据")
+        @PostMapping("/deleteInfo")
+        ApiResult deleteInfo(@ApiParam(value = "ID", example = "1", required = true)
+        @NotNull @PathVariable Integer id);
+        }

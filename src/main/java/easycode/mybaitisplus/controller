@@ -1,0 +1,52 @@
+##引入宏定义
+$!define
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/controller", "Controller.java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("controller")
+
+##使用全局变量实现默认包导入
+$!autoImport
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+* $!{tableInfo.comment}($!{tableInfo.name})表控制层
+*
+* @author $!author
+* @since $!time.currTime()
+*/
+
+@RestController
+public class $!{tableInfo.name}Controller implements $!{tableInfo.name}Api{
+@Autowired
+private $!{tableInfo.name}Service $!tool.firstLowerCase($tableInfo.name)Service;
+
+@Override
+public ApiResult<List<$!{tableInfo.name}Vo>>  getList($!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto){
+    return null;
+    }
+
+    @Override
+    public ApiResult addInfos($!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto){
+    return null;
+    }
+
+    @Override
+    public ApiResult  updateInfo($!{tableInfo.name}Dto $!tool.firstLowerCase($!{tableInfo.name})Dto) {
+    return null;
+    }
+
+    @Override
+    public ApiResult<$!{tableInfo.name}Vo>  getById(@NotNull Integer id) {
+        return null;
+        }
+
+        @Override
+        public ApiResult deleteInfo(@NotNull Integer id) {
+        return null;
+        }
+        }

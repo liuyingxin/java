@@ -1,0 +1,23 @@
+##引入宏定义
+$!define
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/mapper", "Mapper.java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("mapper")
+
+##使用全局变量实现默认包导入
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xin.framework.entity.$!{tableInfo.name};
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+##使用宏定义实现类注释信息
+#tableComment("Mapper类")
+@Mapper
+@Repository
+public interface $!{tableInfo.name}Mapper extends BaseMapper<$!{tableInfo.name}> {
+
+}

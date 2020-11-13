@@ -1,0 +1,20 @@
+##引入宏定义
+$!define
+$!classNameSubstring
+
+##使用宏定义设置回调（保存位置与文件后缀）
+#save("/service", "Service.java")
+
+##使用宏定义设置包后缀
+#setPackageSuffix("service")
+
+##使用全局变量实现默认包导入
+import com.baomidou.mybatisplus.extension.service.IService;
+import  $!{tableInfo.savePackageName}.entity.$!{tableInfo.name};
+
+
+##使用宏定义实现类注释信息
+#tableComment("Service类")
+public interface $!{tableInfo.name}Service extends IService<$!{tableInfo.name}> {
+
+}
