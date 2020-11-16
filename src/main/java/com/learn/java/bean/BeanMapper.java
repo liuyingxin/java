@@ -6,8 +6,8 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface BeanMapper {
+
     BeanMapper MAPPER = Mappers.getMapper(BeanMapper.class);
 
-    CustomerVo creditCustomerToDto(Customer customer);
-
+    CustomerVo toCustomerVo(Customer customer);
 }

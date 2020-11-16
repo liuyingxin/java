@@ -1,13 +1,9 @@
 package com.learn.java.bean;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * 客户信息表(CreditCustomer)实体类
@@ -109,19 +105,9 @@ public class CustomerVo {
     private String companyMobile;
 
     /**
-     * 户籍地--省code
-     */
-    private Integer domicileProvinceCode;
-
-    /**
      * 户籍地--省名称
      */
     private String domicileProvinceName;
-
-    /**
-     * 户籍地--市code
-     */
-    private Integer domicileCityCode;
 
     /**
      * 户籍地--市名称
@@ -129,29 +115,14 @@ public class CustomerVo {
     private String domicileCityName;
 
     /**
-     * 居住地--省code
-     */
-    private Integer habitationProvinceCode;
-
-    /**
      * 居住地--省名称
      */
     private String habitationProvinceName;
 
     /**
-     * 居住地--市code
-     */
-    private Integer habitationCityCode;
-
-    /**
      * 居住地--市名称
      */
     private String habitationCityName;
-
-    /**
-     * 居住地--区code
-     */
-    private Integer habitationAreaCode;
 
     /**
      * 居住地--区名称
@@ -167,29 +138,14 @@ public class CustomerVo {
     private String habitationAddress;
 
     /**
-     * 单位地--省code
-     */
-    private Integer companyProvinceCode;
-
-    /**
      * 单位地--省名称
      */
     private String companyProvinceName;
 
     /**
-     * 单位地--市code
-     */
-    private Integer companyCityCode;
-
-    /**
      * 单位地--市名称
      */
     private String companyCityName;
-
-    /**
-     * 单位地--区code
-     */
-    private Integer companyAreaCode;
 
     /**
      * 单位地--区名称
@@ -201,24 +157,5 @@ public class CustomerVo {
      */
     private String companyAddress;
 
-    /**
-     * 删除标记 0：删除 1：正常
-     */
-    private Integer valid;
-
-    /**
-     * 备注信息
-     */
-    private String remark;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 
 }

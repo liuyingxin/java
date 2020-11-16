@@ -1,11 +1,15 @@
 package com.learn.java.api;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import com.learn.java.bean.CustomerVo;
 import com.learn.java.bean.dto.ListDto;
+import com.learn.java.entity.Customer;
 import com.learn.java.response.ApiResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +24,8 @@ import java.util.List;
 @RequestMapping(value = {"/customer"})
 public interface CustomerApi {
     @ApiOperation("分页查询列表")
-    @PostMapping("/lists")
-    ApiResult<List<CustomerVo>> getMyList(@RequestBody ListDto listDto);
+    @PostMapping("/getList")
+    ApiResult<PageInfo<CustomerVo>> getList(@Validated @RequestBody ListDto listDto);
 
     @ApiOperation("新增数据")
     @PostMapping("addInfomation")
