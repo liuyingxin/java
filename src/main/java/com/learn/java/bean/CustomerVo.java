@@ -5,6 +5,7 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 客户信息表(CreditCustomer)实体类
@@ -30,25 +31,19 @@ public class CustomerVo {
     /**
      * 客户电话
      */
-    @Excel(name = "客户电话", width = 10, groupName = "客户信息")
+    @Excel(name = "客户电话", width = 15, groupName = "客户信息")
     private String mobile;
-
-    /**
-     * 购车城市
-     */
-    @Excel(name = "购车城市", width = 10, groupName = "客户信息")
-    private Integer cityId;
 
     /**
      * 客户性别(1：男，2：女)
      */
-    @Excel(name = "客户性别", width = 10,replace = {"男_1","女_2"}, groupName = "客户信息")
+    @Excel(name = "客户性别", width = 10,replace = {"_0","男_1","女_2"}, groupName = "客户信息")
     private Integer gender;
 
     /**
      * 客户身份证
      */
-    @Excel(name = "客户身份证", width = 10, groupName = "客户信息")
+    @Excel(name = "客户身份证", width = 25, groupName = "客户信息")
     private String idCard;
 
     /**
@@ -66,19 +61,19 @@ public class CustomerVo {
     /**
      * 用户银行账户
      */
-    @Excel(name = "用户银行账户", width = 15, groupName = "客户信息")
+    @Excel(name = "用户银行账户", width = 25, groupName = "客户信息")
     private String bankAccount;
 
     /**
      * 用户银行预留电话
      */
-    @Excel(name = "用户银行预留电话", width = 10, groupName = "客户信息")
+    @Excel(name = "用户银行预留电话", width = 25, groupName = "客户信息")
     private String bankMobile;
 
     /**
      * 单位性质(1:国家行政单位;2:事业单位;3:国有企业;4:外资企业;5:合资企业;6:私营企业;7:个体户;8:无业;)
      */
-    @Excel(name = "单位性质", width = 10,replace = {"国家行政单位_1","事业单位_2","国有企业_3","外资企业_4","合资企业_5","私营企业_6","个体户_7","无业_8"}, groupName = "客户信息")
+    @Excel(name = "单位性质", width = 10,replace = {"_0","国家行政单位_1","事业单位_2","国有企业_3","外资企业_4","合资企业_5","私营企业_6","个体户_7","无业_8"}, groupName = "客户信息")
     private Integer companyProperty;
 
     /**
@@ -96,13 +91,13 @@ public class CustomerVo {
     /**
      * 配偶手机号
      */
-    @Excel(name = "配偶手机号", width = 10, groupName = "配偶信息")
+    @Excel(name = "配偶手机号", width =25, groupName = "配偶信息")
     private String spouseMobile;
 
     /**
      * 配偶身份证
      */
-    @Excel(name = "配偶身份证", width = 10, groupName = "配偶信息")
+    @Excel(name = "配偶身份证", width = 25, groupName = "配偶信息")
     private String spouseIdCard;
 
     /**
@@ -120,14 +115,14 @@ public class CustomerVo {
     /**
      * 单位电话
      */
-    @Excel(name = "单位电话", width = 10, groupName = "单位信息")
+    @Excel(name = "单位电话", width = 25, groupName = "单位信息")
     private String companyMobile;;
 
     /**
      * 更新时间
      */
     @Excel(name = "更新时间", format = "yyyy-MM-dd HH:mm:ss", width = 25, groupName = "时间信息")
-    private String updateTime;
+    private Date updateTime;
 
 
 }
