@@ -1,8 +1,11 @@
 package com.learn.java.controller;
 
+import cn.afterturn.easypoi.excel.ExcelExportUtil;
+import cn.afterturn.easypoi.excel.entity.ExportParams;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.additional.query.impl.LambdaQueryChainWrapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,13 +19,14 @@ import com.learn.java.entity.Customer;
 import com.learn.java.mapper.CustomerMapper;
 import com.learn.java.response.ApiResult;
 import com.learn.java.service.CustomerService;
+import com.learn.java.utils.ResponseUtils;
 import com.sun.istack.internal.NotNull;
-import io.swagger.annotations.ApiResponse;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,5 +86,21 @@ public class CustomerController implements CustomerApi {
     public ApiResult deleteInfo(@NotNull Integer id) {
         customerService.removeById(id);
         return ApiResult.success();
+    }
+
+    @Override
+    public void getExcel(List<Integer> ids, HttpServletResponse response) {
+
+        LambdaQueryWrapper<Customer> lambdaQueryWrapper = Wrappers.<Customer>lambdaQuery()
+                .in(Customer::getId, ids);
+        List<Customer> customer = customerService.list(lambdaQueryWrapper);
+        List<Customer> customer1 = new LambdaQueryChainWrapper<>(customerMapper).in(Customer::getId, ids).list();
+        List<CustomerVo> voList = BeanMapper.MAPPER.toCustomerListVo(customer);
+        Workbook workbook = ExcelExportUtil.exportExcel(
+                new ExportParams("数据导出", "数据导出"),
+                CustomerVo.class, voList);
+        ResponseUtils.exportExcelByResponse("数据导出.xls", workbook, response);
+
+
     }
 }

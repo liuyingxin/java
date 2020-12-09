@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.learn.java.bean.dto.CustomerDto;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -44,5 +45,10 @@ public interface CustomerApi {
     @PostMapping("deleteInfomation")
     ApiResult deleteInfo(@ApiParam(value = "ID", example = "1", required = true)
                          @NotNull @PathVariable Integer id);
+
+    @ApiOperation(value = "数据导出")
+    @PostMapping("/excel")
+    void getExcel(@RequestBody List<Integer> ids, HttpServletResponse response);
+
 
 }
