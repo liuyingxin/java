@@ -14,4 +14,6 @@ public interface BeanMapper {
     CustomerVo toCustomerVo(Customer customer);
 
     List<CustomerVo> toCustomerListVo(List<Customer> customer);
+
+
 }

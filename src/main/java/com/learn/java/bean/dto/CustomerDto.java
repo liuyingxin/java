@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
@@ -12,6 +13,7 @@ public class CustomerDto {
     /**
      * 授信客户自增id"
      */
+    @NotNull(message = "id不能为空", groups = {CustomerDto.ReturnCheck.class})
     private Integer id;
 
     /**
@@ -219,5 +221,7 @@ public class CustomerDto {
      */
     private Date updateTime;
 
+    public interface ReturnCheck {
 
+    }
 }

@@ -30,7 +30,7 @@ public interface CustomerApi {
 
     @ApiOperation("新增数据")
     @PostMapping("addInfomation")
-    ApiResult<CustomerVo> addInfomation(@RequestBody CustomerDto c2);
+    ApiResult<CustomerVo> addInfomation(@RequestBody @Validated(CustomerDto.ReturnCheck.class) CustomerDto c2);
 
     @ApiOperation("修改数据")
     @PostMapping("updateInfomation")
